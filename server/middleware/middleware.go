@@ -52,7 +52,7 @@ func createDBInstance() {
 	fmt.Println("connected to mongo db")
 
 	collection = client.Database(dbName).Collection(collName)
-	fmt.Println("connection instacne craeted")
+	fmt.Println("connection instance craeted")
 
 }
 
@@ -75,7 +75,6 @@ func CreateTask(w http.ResponseWriter, r *http.Request) {
 	if task.Task == "" {
 		return
 	}
-	fmt.Println(task, "hi")
 	insertOneTask(task)
 	json.NewEncoder(w).Encode(task)
 }
@@ -99,7 +98,6 @@ func UndoTask(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	params := mux.Vars(r)
-	fmt.Println(params["id"])
 	undoTask(params["id"])
 	json.NewEncoder(w).Encode(params["id"])
 
@@ -135,7 +133,6 @@ func insertOneTask(task models.ToDoList) {
 
 func getAllTasks() []primitive.M {
 	cur, err := collection.Find(context.Background(), bson.D{{}})
-	fmt.Println(cur)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -158,7 +155,6 @@ func getAllTasks() []primitive.M {
 
 func taskComplete(task string) {
 	id, _ := primitive.ObjectIDFromHex(task)
-	fmt.Println(id)
 	filter := bson.M{"_id": id}
 	update := bson.M{"$set": bson.M{"status": true}}
 	result, err := collection.UpdateOne(context.Background(), filter, update)
@@ -176,12 +172,11 @@ func undoTask(task string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("modifiedl cout : ", result.ModifiedCount)
+	fmt.Println("modified count : ", result.ModifiedCount)
 }
 
 func deleteOneTask(task string) {
 	id, _ := primitive.ObjectIDFromHex(task)
-	fmt.Println(id)
 	filter := bson.M{"_id": id}
 	d, err := collection.DeleteOne(context.Background(), filter)
 	if err != nil {
