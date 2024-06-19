@@ -3,13 +3,16 @@ import axios from "axios";
 import "semantic-ui-css/semantic.min.css";
 import { Card, Header, Form, Input, Icon } from "semantic-ui-react";
 
+// Define the API endpoint where the backend server is running
 const endpoint = "http://localhost:9000";
 
+// Define the interface for the component's state
 interface ToDoListState {
   task: string;
   items: TaskItem[];
 }
 
+// Define interface for each TaskItem
 interface TaskItem {
   _id: string;
   task: string;
@@ -20,37 +23,44 @@ class ToDoList extends Component<{}, ToDoListState> {
   constructor(props: {}) {
     super(props);
 
+    // Initialize state with empty task and an empty array of items
     this.state = {
       task: "",
       items: [],
     };
   }
 
+  // Calls getTask function which fetches all task from backend  after component is mounted
   componentDidMount() {
     this.getTask();
   }
 
-  onChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    } as unknown as Pick<ToDoListState, keyof ToDoListState>);
-  };
-
+  // Fetch all tasks from the backend server
   getTask = () => {
     axios.get(endpoint + "/api/task").then((res) => {
       console.log(res);
       if (res.data) {
         this.setState({
-          items: res.data,
+          items: res.data, // Update state with fetched task items
         });
       } else {
         this.setState({
-          items: [],
+          items: [], // Empty List if no data returned
         });
       }
     });
   };
 
+  // Handler for input change events
+  onChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = event.target;
+    this.setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  // Handler for form submission to create a new task
   onSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const { task } = this.state;
@@ -67,9 +77,9 @@ class ToDoList extends Component<{}, ToDoListState> {
           }
         )
         .then((res) => {
-          this.getTask();
+          this.getTask(); // Refresh task list after creating new task
           this.setState({
-            task: "",
+            task: "", // clears input field to empty
           });
           console.log(res);
         })
@@ -79,6 +89,7 @@ class ToDoList extends Component<{}, ToDoListState> {
     }
   };
 
+  // Handler to mark a task as undone
   undotask = (id: string) => {
     axios
       .put(
@@ -92,13 +103,14 @@ class ToDoList extends Component<{}, ToDoListState> {
       )
       .then((res) => {
         console.log(res);
-        this.getTask();
+        this.getTask(); // Refresh task list
       })
       .catch((error) => {
         console.error("error undoing task", error);
       });
   };
 
+  // Handler to update a task's status as completed (status : True)
   updateTask = (id: string) => {
     axios
       .put(
@@ -112,15 +124,15 @@ class ToDoList extends Component<{}, ToDoListState> {
       )
       .then((res) => {
         console.log(res);
-        this.getTask();
+        this.getTask(); // Refresh the task List
       })
       .catch((error) => {
         console.error("Error updating task:", error);
       });
   };
 
+  // Handler to delete a task
   deleteTask = (id: string) => {
-    console.log(id);
     axios
       .delete(`${endpoint}/api/deleteTask/${id}`, {
         headers: {
@@ -129,13 +141,14 @@ class ToDoList extends Component<{}, ToDoListState> {
       })
       .then((res) => {
         console.log(res);
-        this.getTask();
+        this.getTask(); // Refreshes the Task list
       })
       .catch((error) => {
         console.error("Error deleting task:", error);
       });
   };
 
+  // Render method to render the component UI
   render(): React.ReactNode {
     return (
       <div>
