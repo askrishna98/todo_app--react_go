@@ -8,17 +8,19 @@ const endpoint = "http://localhost:9000";
 
 // Define the interface for the component's state
 interface ToDoListState {
-  task: string;
-  items: TaskItem[];
+  task: string; // Current task being entered or edited
+  items: TaskItem[]; // Array of task items fetched from backend
 }
 
 // Define interface for each TaskItem
 interface TaskItem {
-  _id: string;
-  task: string;
+  _id: string; // Unique identifier of the task item
+  task: string; // titile of task
   status: boolean;
 }
 
+// The component maintains state for the current task input (string) and an array of TaskItem objects.
+// Each TaskItem contains properties for id (string), task description (string), and completion status (boolean).
 class ToDoList extends Component<{}, ToDoListState> {
   constructor(props: {}) {
     super(props);
