@@ -1,13 +1,16 @@
 package router
 
+// this provides the routing and request handling for the web server application.
 import (
 	"github.com/aswin/go-react-todo/middleware"
 	"github.com/gorilla/mux"
 )
 
 func Router() *mux.Router {
-
+	// Creates instance of new router
 	router := mux.NewRouter()
+
+	// Define the routes and their corresponding handlers from the middleware package
 
 	router.HandleFunc("/api/task", middleware.GetAllTasks).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/tasks", middleware.CreateTask).Methods("POST", "OPTIONS")
