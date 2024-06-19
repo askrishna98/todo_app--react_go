@@ -38,12 +38,14 @@ func loadTheEnv() {
 
 // createDBInstance creates a MongoDB client instance and connects to the database.
 func createDBInstance() {
+
 	// gets connectionString,DBname,Collection name from environment variable
 	connectionString := os.Getenv("DB_URI")
 	dbName := os.Getenv("DB_NAME")
 	collName := os.Getenv("DB_COLLECTION_NAME")
 
 	clientOption := options.Client().ApplyURI(connectionString)
+
 	// Connect to MongoDB.
 	client, err := mongo.Connect(context.TODO(), clientOption)
 
@@ -61,12 +63,14 @@ func createDBInstance() {
 
 	//DBinstance created - now we can query to this collection
 	collection = client.Database(dbName).Collection(collName)
+
 	fmt.Println("connection instance craeted")
 
 }
 
 // GetAllTasks handles the HTTP request for retrieving all tasks.
 func GetAllTasks(w http.ResponseWriter, r *http.Request) {
+
 	w.Header().Set("Content-Type", "application/x-www-form-urlencoded")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 
@@ -203,6 +207,7 @@ func getAllTasks() []primitive.M {
 
 // finds the task from MongoDB and set the status field to True
 func taskComplete(task string) {
+
 	// Convert task ID string to MongoDB ObjectID
 	id, _ := primitive.ObjectIDFromHex(task)
 
@@ -222,6 +227,7 @@ func taskComplete(task string) {
 
 // finds the task from MongoDB and set the status field to false
 func undoTask(task string) {
+
 	// Convert task ID string to MongoDB ObjectID
 	id, _ := primitive.ObjectIDFromHex(task)
 
@@ -238,6 +244,7 @@ func undoTask(task string) {
 }
 
 func deleteOneTask(task string) {
+
 	// Convert task ID string to MongoDB ObjectID
 	id, _ := primitive.ObjectIDFromHex(task)
 
