@@ -10,3 +10,13 @@ A full-stack Todo application built with React for the frontend, Go for the back
 2. **Delete Task**: Users can remove tasks from their todo list.
 3. **Mark Task as Done**: Users can mark tasks as completed.
 4. **Mark Task as Undone**: Users can revert completed tasks back to their pending state.
+
+# Prerequisites
+
+- **Node.js and npm**: Make sure you have Node.js and npm installed on your machine.
+- **Go**: Install the Go programming language to run the backend server.
+- **MongoDB**: Set up a MongoDB database to store your application's data
+
+# Installation
+
+
