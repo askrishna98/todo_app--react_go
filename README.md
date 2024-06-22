@@ -6,7 +6,7 @@ A full-stack Todo application built with React for the frontend, Go for the back
 
 # Features
 
-1. Add Task: Users can create new tasks and add them to their todo list.
-2. Delete Task: Users can remove tasks from their todo list.
-3. Mark Task as Done: Users can mark tasks as completed.
-4. Mark Task as Undone: Users can revert completed tasks back to their pending state.
+1. \_Add Task: Users can create new tasks and add them to their todo list.
+2. \_Delete Task: Users can remove tasks from their todo list.
+3. \_Mark Task as Done: Users can mark tasks as completed.
+4. \_Mark Task as Undone: Users can revert completed tasks back to their pending state.
