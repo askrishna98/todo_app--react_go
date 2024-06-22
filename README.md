@@ -22,4 +22,7 @@ A full-stack Todo application built with React for the frontend, Go for the back
 **1. Clone the Repository**
 
 **2. Backend Setup** - Navigate to the 'servers' directory
+
+```sh
 cd servers
+```
