@@ -61,6 +61,12 @@ A full-stack Todo application built with React for the frontend, Go for the back
      npm run dev
      ```
 
+4. **Database Setup**
+
+   - Install mongoDB on local
+   - After installation, start MongoDB on port 27017
+   - If you prefer to use a different port, update the server configuration file located at server/.env. Locate the DB_URI variable in the .env file and change the port number to your preferred value.
+
 # Usage
 
 After completing the installation steps, you should be able to access the frontend application in your web browser at the port specified by Vite and the backend server should be running on `http://localhost:9000`.You can add a new task directly from the frontend interface. Simply type your task in the input field labeled "Create Task" and press Enter or click the "Create Task" button to add it to your todo list.
