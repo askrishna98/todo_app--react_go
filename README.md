@@ -65,7 +65,8 @@ A full-stack Todo application built with React for the frontend, Go for the back
 
    - Install mongoDB on local
    - After installation, start MongoDB on port 27017
-   - If you prefer to use a different port, update the server configuration file located at server/.env. Locate the DB_URI variable in the .env file and change the port number to your preferred value.
+   - If you prefer to use a different port, update the server configuration file located at 'server/.env'.
+   - Locate the 'DB_URI' variable in the '.env' file and change the port number to your preferred value.
 
 # Usage
 
