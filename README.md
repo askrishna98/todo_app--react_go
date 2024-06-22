@@ -19,11 +19,24 @@ A full-stack Todo application built with React for the frontend, Go for the back
 
 # Installation
 
-**1. Clone the Repository**
+2. **Clone the Repository**
 
-**2. Backend Setup**  
-Navigate to the 'servers' directory
+3. **Backend Setup**
 
-```sh
-cd servers
-```
+   - Navigate to the `servers` directory:
+
+     ```sh
+     cd servers
+     ```
+
+   - Install Go dependencies:
+
+     ```sh
+     go mod tidy
+     ```
+
+   - Start the Go server:
+
+     ```sh
+     go run main.go
+     ```
