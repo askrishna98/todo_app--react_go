@@ -23,10 +23,10 @@ A full-stack Todo application built with React for the frontend, Go for the back
 
 2. **Backend Setup**
 
-   - Navigate to the `servers` directory:
+   - Navigate to the `server` directory:
 
      ```sh
-     cd servers
+     cd server
      ```
 
    - Install Go dependencies:
@@ -63,4 +63,4 @@ A full-stack Todo application built with React for the frontend, Go for the back
 
 # Usage
 
-After completing the installation steps, you should be able to access the frontend application in your web browser at the port specified by Vite and the backend server should be running on `http://localhost:9000`.
+After completing the installation steps, you should be able to access the frontend application in your web browser at the port specified by Vite and the backend server should be running on `http://localhost:9000`.You can add a new task directly from the frontend interface. Simply type your task in the input field labeled "Create Task" and press Enter or click the "Create Task" button to add it to your todo list.
