@@ -19,9 +19,9 @@ A full-stack Todo application built with React for the frontend, Go for the back
 
 # Installation
 
-2. **Clone the Repository**
+1. **Clone the Repository**
 
-3. **Backend Setup**
+2. **Backend Setup**
 
    - Navigate to the `servers` directory:
 
@@ -40,3 +40,27 @@ A full-stack Todo application built with React for the frontend, Go for the back
      ```sh
      go run main.go
      ```
+
+3. **Frontend Setup**
+
+   - Open a new terminal window and navigate to the `todo` directory:
+
+     ```sh
+     cd ../todo
+     ```
+
+   - Install npm dependencies:
+
+     ```sh
+     npm install
+     ```
+
+   - Start the Vite development server:
+
+     ```sh
+     npm run dev
+     ```
+
+# Usage
+
+After completing the installation steps, you should be able to access the frontend application in your web browser at the port specified by Vite and the backend server should be running on `http://localhost:9000`.
